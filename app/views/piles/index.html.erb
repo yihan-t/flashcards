@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>
+    Piles
+    <a href="/piles/new" class="btn btn-lg btn-success">New Pile</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>User</th>
+        <th>Vocab</th>
+        <th>Vocab w</th>
+        <th>Vocab l</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @piles.each do |pile| %>
+      <tr>
+        <td><%= pile.user_id %></td>
+        <td><%= pile.vocab %></td>
+        <td><%= pile.vocab_w %></td>
+        <td><%= pile.vocab_l %></td>
+        <td>
+          <a href="/piles/<%= pile.id %>" class="btn btn-primary">Show</a>
+          <a href="/piles/<%= pile.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_pile/<%= pile.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

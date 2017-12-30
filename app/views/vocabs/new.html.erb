@@ -1,0 +1,69 @@
+<!-- Validation failure messages -->
+<% if @vocab.errors.any? %>
+  <% @vocab.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Vocab</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_vocab" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for lesson_id -->
+      <div class="form-group">
+        <label for="lesson_id" class="control-label">
+          Module
+        </label>
+
+        <%= select_tag("lesson_id", options_from_collection_for_select(Lesson.where(owner_id: current_user.id), 'id', 'name', session[:current_lesson_id]), :class => "form-control") %>
+
+      
+      </div>
+
+      <!-- Label and input for chinese -->
+      <div class="form-group">
+        <label for="chinese" class="control-label">
+          Chinese
+        </label>
+
+        <input type="text" id="chinese" name="chinese" placeholder="Chinese" class="form-control" value="<%= @vocab.chinese %>">
+      </div>
+
+      <!-- Label and input for english -->
+      <div class="form-group">
+        <label for="english" class="control-label">
+          English
+        </label>
+
+        <input type="text" id="english" name="english" placeholder="English" class="form-control" value="<%= @vocab.english %>">
+      </div>
+
+      <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="control-label">
+          Notes
+        </label>
+
+        <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @vocab.notes %>">
+      </div>
+
+      <!-- Label and input for owner_id -->
+      <input type="hidden" id="owner_id" name="owner_id" value="<%= current_user.id %>">
+
+      <button class="btn btn-success">
+        Create Vocab
+      </button>
+      or
+      <a href="/modules/<%= session[:current_lesson_id] %>">Cancel</a>
+    </form>
+  </div>
+</div>

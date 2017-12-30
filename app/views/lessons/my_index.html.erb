@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    My Vocab Modules
+    <a href="/modules/new" class="btn btn-lg btn-success">New Module</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Module</th>
+        <th>Number of words</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @lessons.each do |lesson| %>
+      <tr>
+        <td><%= lesson.name %></td>
+        <td><%= lesson.vocabs.count %></td>
+        <td>
+          <a href="/modules/<%= lesson.id %>" class="btn btn-primary">See Vocab</a>
+          <a href="/practice/default/<%= lesson.id %>" class="btn btn-success">Practice</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <a href="/all_lessons">See modules created by other users</a>
+  </div>
+</div>
+
+

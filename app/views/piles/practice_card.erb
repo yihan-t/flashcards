@@ -1,0 +1,19 @@
+<h1>
+  <% if @pile.translate == "e2c" %>
+    <%= @vocab.english %>
+  <% elsif @pile.translate == "c2e" %>
+    <%= @vocab.chinese %>
+  <% end %>
+</h1>
+
+<hr>
+
+<a href="/practice/<%= @pile.id %>/<%= @vocab.id %>/answer" class="btn btn-warning">See Answer</a>
+
+<hr>
+For development:
+<br>
+Vocab <%= @pile.vocab %> <br>
+Vocab_w <%= @pile.vocab_w %> <br>
+Vocab_l <%= @pile.vocab_l %> <br>
+Vocab_priority <%= @pile.vocab_priority %>

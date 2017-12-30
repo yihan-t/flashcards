@@ -1,0 +1,109 @@
+<!-- Validation failure messages -->
+<% if @vocab.errors.any? %>
+  <% @vocab.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Vocab #<%= @vocab.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_vocab/<%= @vocab.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for lesson_id -->
+      <div class="form-group">
+        <label for="lesson_id" class="control-label">
+          Lesson
+        </label>
+
+        <input type="text" id="lesson_id" name="lesson_id" placeholder="Lesson" class="form-control" value="<%= @vocab.lesson_id %>">
+      </div>
+
+      <!-- Label and input for english -->
+      <div class="form-group">
+        <label for="english" class="control-label">
+          English
+        </label>
+
+        <input type="text" id="english" name="english" placeholder="English" class="form-control" value="<%= @vocab.english %>">
+      </div>
+
+      <!-- Label and input for chinese -->
+      <div class="form-group">
+        <label for="chinese" class="control-label">
+          Chinese
+        </label>
+
+        <input type="text" id="chinese" name="chinese" placeholder="Chinese" class="form-control" value="<%= @vocab.chinese %>">
+      </div>
+
+      <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="control-label">
+          Notes
+        </label>
+
+        <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @vocab.notes %>">
+      </div>
+
+      <!-- Label and input for e2c_w -->
+      <div class="form-group">
+        <label for="e2c_w" class="control-label">
+          E2c w
+        </label>
+
+        <input type="text" id="e2c_w" name="e2c_w" placeholder="E2c w" class="form-control" value="<%= @vocab.e2c_w %>">
+      </div>
+
+      <!-- Label and input for e2c_l -->
+      <div class="form-group">
+        <label for="e2c_l" class="control-label">
+          E2c l
+        </label>
+
+        <input type="text" id="e2c_l" name="e2c_l" placeholder="E2c l" class="form-control" value="<%= @vocab.e2c_l %>">
+      </div>
+
+      <!-- Label and input for c2e_w -->
+      <div class="form-group">
+        <label for="c2e_w" class="control-label">
+          C2e w
+        </label>
+
+        <input type="text" id="c2e_w" name="c2e_w" placeholder="C2e w" class="form-control" value="<%= @vocab.c2e_w %>">
+      </div>
+
+      <!-- Label and input for c2e_l -->
+      <div class="form-group">
+        <label for="c2e_l" class="control-label">
+          C2e l
+        </label>
+
+        <input type="text" id="c2e_l" name="c2e_l" placeholder="C2e l" class="form-control" value="<%= @vocab.c2e_l %>">
+      </div>
+
+      <!-- Label and input for owner_id -->
+      <div class="form-group">
+        <label for="owner_id" class="control-label">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id" name="owner_id" placeholder="Owner" class="form-control" value="<%= @vocab.owner_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Vocab
+      </button>
+      or
+      <a href="/vocabs/<%= @vocab.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

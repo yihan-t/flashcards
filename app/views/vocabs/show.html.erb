@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h3 class="text-center"><%= @vocab.chinese %></h3>
+  <br>
+  <h3 class="text-center"><%= @vocab.english %></h3>
+</div>
+
+<div>
+  <h4>Notes</h4>
+  <h5><%= @vocab.notes %></h5>
+</div>
+
+<div>
+  <h4>Lesson: <%= @vocab.lesson.name %></h4>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+  <h4>Win-loss record</h4>
+    <dl class="dl-horizontal">
+
+      <dt>English to Chinese wins</dt>
+      <dd><%= @vocab.e2c_w %></dd>
+
+      <dt>English to Chinese losses</dt>
+      <dd><%= @vocab.e2c_l %></dd>
+
+      <dt>Chinese to English wins</dt>
+      <dd><%= @vocab.c2e_w %></dd>
+
+      <dt>Chinese to English losses</dt>
+      <dd><%= @vocab.c2e_l %></dd>
+
+    </dl>
+    
+    <h4>Other info</h4>
+    <dl class="dl-horizontal">
+      
+      <dt>Owner</dt>
+      <dd><%= @vocab.owner_id %></dd>
+
+      <dt>Created at</dt>
+      <dd><%= @vocab.created_at %></dd>
+
+      <dt>Last updated</dt>
+      <dd><%= @vocab.updated_at %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/vocabs" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/vocabs/<%= @vocab.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_vocab/<%= @vocab.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

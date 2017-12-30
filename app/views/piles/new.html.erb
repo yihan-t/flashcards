@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @pile.errors.any? %>
+  <% @pile.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Pile</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_pile" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @pile.user_id %>">
+      </div>
+
+      <!-- Label and input for vocab -->
+      <div class="form-group">
+        <label for="vocab" class="control-label">
+          Vocab
+        </label>
+
+        <textarea id="vocab" name="vocab" placeholder="Vocab" class="form-control" rows="3"><%= @pile.vocab %></textarea>
+      </div>
+
+      <!-- Label and input for vocab_w -->
+      <div class="form-group">
+        <label for="vocab_w" class="control-label">
+          Vocab w
+        </label>
+
+        <textarea id="vocab_w" name="vocab_w" placeholder="Vocab w" class="form-control" rows="3"><%= @pile.vocab_w %></textarea>
+      </div>
+
+      <!-- Label and input for vocab_l -->
+      <div class="form-group">
+        <label for="vocab_l" class="control-label">
+          Vocab l
+        </label>
+
+        <textarea id="vocab_l" name="vocab_l" placeholder="Vocab l" class="form-control" rows="3"><%= @pile.vocab_l %></textarea>
+      </div>
+
+      <button class="btn btn-success">
+        Create Pile
+      </button>
+      or
+      <a href="/piles">Cancel</a>
+    </form>
+  </div>
+</div>

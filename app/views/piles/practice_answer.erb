@@ -1,0 +1,35 @@
+<h1>
+  <% if @pile.translate == "e2c" %>
+    <%= @vocab.english %>
+    <br>
+    <%= @vocab.chinese%>
+  <% elsif @pile.translate == "c2e" %>
+    <%= @vocab.chinese %>
+    <br>
+    <%= @vocab.english %>
+  <% end %>
+</h1>
+
+<hr>
+
+<a href="/practice/<%= @pile.id %>/<%= @vocab.id %>/win" class="btn btn-primary">Correct</a>
+<a href="/practice/<%= @pile.id %>/<%= @vocab.id %>/loss" class="btn btn-danger">Incorrect</a>
+
+<hr>
+
+<% if @vocab.notes != '' %>
+<h5>
+  Notes
+  <%= @vocab.notes %>
+</h5>
+<% end %>
+
+
+
+<hr>
+For development:
+<br>
+Vocab <%= @pile.vocab %> <br>
+Vocab_w <%= @pile.vocab_w %> <br>
+Vocab_l <%= @pile.vocab_l %> <br>
+Vocab_priority <%= @pile.vocab_priority %>

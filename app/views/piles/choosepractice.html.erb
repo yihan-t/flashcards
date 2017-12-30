@@ -1,0 +1,44 @@
+<div class="page-header">
+  <h3>Choose Practice</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/initialize_practice_lesson" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          Practice by module
+        </label>
+
+        <%= select_tag("lesson_id", options_from_collection_for_select(Lesson.where(owner_id: current_user.id), 'id', 'name', session[:current_lesson_id]), :class => "form-control") %>
+      </div>
+      
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="translate" id="c2e" value="c2e" checked>
+          Chinese to English
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="translate" id="e2c" value="e2c">
+          English to Chinese
+        </label>
+      </div>
+      
+      <!-- Label and input for user_id -->
+      <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+
+      <button class="btn btn-success">
+        Practice module
+      </button>
+      or
+      <a href="/piles">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h3>
+    <%= @lesson.name %>
+    <a href="/vocabs/new" class="btn btn-lg btn-success">Add Vocab</a>
+    <a href="/practice" class="btn btn-lg btn-success">Practice</a>
+  </h3>
+  <small>Owner: <%= @lesson.owner.username %></small>
+      
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Chinese</th>
+        <th>English</th>
+        <th>Last Reviewed</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @vocabs.each do |vocab| %>
+      <tr>
+        <td><%= vocab.chinese %></td>
+        <td><%= vocab.english %></td>
+        <td>[placeholder]</td>
+        <td>
+          <a href="/vocabs/<%= vocab.id %>" class="btn btn-primary">Details</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<a href="/vocabs/index">See all my vocab</a>
+<br><br>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    
+    <div class="btn-group btn-group-justified">
+      <a href="/modules" class="btn btn-primary">
+        Back to all modules
+      </a>
+      <a href="/modules/<%= @lesson.id %>/edit" class="btn btn-warning">
+        Edit module name
+      </a>
+      <a href="/delete_lesson/<%= @lesson.id %>" class="btn btn-danger" rel="nofollow">
+        Delete module
+      </a>
+    </div>
+  </div>
+</div>
