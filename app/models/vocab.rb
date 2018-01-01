@@ -34,4 +34,24 @@ class Vocab < ApplicationRecord
     self.chinese = chinese.downcase
   end
   
+  def self.record_win(translate, vocab_id)
+    @vocab = Vocab.find_by(id: vocab_id)
+    if translate=="e2c"
+      @vocab.e2c_w = @vocab.e2c_w + 1
+    elsif translate=="c2e"
+      @vocab.c2e_w = @vocab.c2e_w + 1
+    end
+    @vocab.save
+  end
+  
+  def self.record_loss(translate, vocab_id)
+    @vocab = Vocab.find_by(id: vocab_id)
+    if translate=="e2c"
+      @vocab.e2c_l = @vocab.e2c_l + 1
+    elsif translate=="c2e"
+      @vocab.c2e_l = @vocab.c2e_l + 1
+    end
+    @vocab.save
+  end
+  
 end

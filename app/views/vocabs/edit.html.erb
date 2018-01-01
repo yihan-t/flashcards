@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Vocab #<%= @vocab.id %></h3>
+  <h3>Edit Vocab</h3>
 </div>
 
 <div class="row">
@@ -21,10 +21,13 @@
       <!-- Label and input for lesson_id -->
       <div class="form-group">
         <label for="lesson_id" class="control-label">
-          Lesson
+          Module
         </label>
 
-        <input type="text" id="lesson_id" name="lesson_id" placeholder="Lesson" class="form-control" value="<%= @vocab.lesson_id %>">
+        <%= select_tag("lesson_id", options_from_collection_for_select(Lesson.where(owner_id: current_user.id), 'id', 'name', @vocab.lesson_id), :class => "form-control") %>
+
+
+      
       </div>
 
       <!-- Label and input for english -->
@@ -54,50 +57,6 @@
         <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @vocab.notes %>">
       </div>
 
-      <!-- Label and input for e2c_w -->
-      <div class="form-group">
-        <label for="e2c_w" class="control-label">
-          E2c w
-        </label>
-
-        <input type="text" id="e2c_w" name="e2c_w" placeholder="E2c w" class="form-control" value="<%= @vocab.e2c_w %>">
-      </div>
-
-      <!-- Label and input for e2c_l -->
-      <div class="form-group">
-        <label for="e2c_l" class="control-label">
-          E2c l
-        </label>
-
-        <input type="text" id="e2c_l" name="e2c_l" placeholder="E2c l" class="form-control" value="<%= @vocab.e2c_l %>">
-      </div>
-
-      <!-- Label and input for c2e_w -->
-      <div class="form-group">
-        <label for="c2e_w" class="control-label">
-          C2e w
-        </label>
-
-        <input type="text" id="c2e_w" name="c2e_w" placeholder="C2e w" class="form-control" value="<%= @vocab.c2e_w %>">
-      </div>
-
-      <!-- Label and input for c2e_l -->
-      <div class="form-group">
-        <label for="c2e_l" class="control-label">
-          C2e l
-        </label>
-
-        <input type="text" id="c2e_l" name="c2e_l" placeholder="C2e l" class="form-control" value="<%= @vocab.c2e_l %>">
-      </div>
-
-      <!-- Label and input for owner_id -->
-      <div class="form-group">
-        <label for="owner_id" class="control-label">
-          Owner
-        </label>
-
-        <input type="text" id="owner_id" name="owner_id" placeholder="Owner" class="form-control" value="<%= @vocab.owner_id %>">
-      </div>
 
       <button class="btn btn-warning">
         Update Vocab

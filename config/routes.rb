@@ -1,33 +1,36 @@
 Rails.application.routes.draw do
   # Routes for the Pile resource:
+  
+  # CREATE NEW PILE
   get "/practice", :controller => "piles", :action => "choose_practice"
   get "/practice/default/:lesson_id", :controller => "piles", :action => "choose_practice_default"
   post "/initialize_practice_lesson", :controller => "piles", :action => "initialize_practice_lesson"
   
-  get "/practice/:pile_id/complete", :controller => "piles", :action => "complete"
-  get "/practice/:pile_id/:vocab_id", :controller => "piles", :action => "practice_card"
+  # GO THROUGH PILE (EDIT)
+  get "/practice/:pile_id", :controller => "piles", :action => "new_card"
   get "/practice/:pile_id/:vocab_id/answer", :controller => "piles", :action => "practice_card_answer"
   get "/practice/:pile_id/:vocab_id/win", :controller => "piles", :action => "win"
   get "/practice/:pile_id/:vocab_id/loss", :controller => "piles", :action => "loss"
   
-  
+  ## Practice log
+  get "/practice_log", :controller => "piles", :action => "practice_log"
   
   # CREATE
-  get "/piles/new", :controller => "piles", :action => "new"
-  post "/create_pile", :controller => "piles", :action => "create"
+ # get "/piles/new", :controller => "piles", :action => "new"
+#  post "/create_pile", :controller => "piles", :action => "create"
 
   # READ
   get "/piles", :controller => "piles", :action => "index"
   get "/piles/:id", :controller => "piles", :action => "show"
 
-  # UPDATE
-  get "/piles/:id/edit", :controller => "piles", :action => "edit"
-  post "/update_pile/:id", :controller => "piles", :action => "update"
+#  UPDATE
+#  get "/piles/:id/edit", :controller => "piles", :action => "edit"
+#  post "/update_pile/:id", :controller => "piles", :action => "update"
 
   # DELETE
   get "/delete_pile/:id", :controller => "piles", :action => "destroy"
   #------------------------------
-
+ 
   devise_for :users
 
   root 'lessons#my_index'

@@ -60,11 +60,6 @@ class VocabsController < ApplicationController
     @vocab.english = params[:english]
     @vocab.chinese = params[:chinese]
     @vocab.notes = params[:notes]
-    @vocab.e2c_w = params[:e2c_w]
-    @vocab.e2c_l = params[:e2c_l]
-    @vocab.c2e_w = params[:c2e_w]
-    @vocab.c2e_l = params[:c2e_l]
-    @vocab.owner_id = params[:owner_id]
 
     save_status = @vocab.save
 
